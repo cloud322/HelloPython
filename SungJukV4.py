@@ -40,12 +40,12 @@ class SungJukService:
         return tot
 
     def getAverage(self,sj):
-        avg = self.getTotal() / 3
+        avg = self.getTotal(sj) / 3
         return avg
 
     def getGrade(self,sj):
         grdlist='FFFFFDCBAA'
-        var = int(self.getAverage()/10)
+        var = int(self.getAverage(sj)/10)
         grd = grdlist[var]
         return grd
 

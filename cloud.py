@@ -43,4 +43,24 @@ def intCal():
                  num1,num2,num1/num2,\
                  num1,num2,num1**num2))
 
+class SungjukV0:
+    def __init__(self, name, kor, eng, mat):
+        self.name = name
+        self.kor = kor
+        self.eng = eng
+        self.mat = mat
 
+class SungJukService:
+    def getTotal(self,sj):
+        tot = sj.kor + sj.eng + sj.mat
+        return tot
+
+    def getAverage(self,sj):
+        avg = self.getTotal(sj) / 3
+        return avg
+
+    def getGrade(self,sj):
+        grdlist='FFFFFDCBAA'
+        var = int(self.getAverage(sj)/10)
+        grd = grdlist[var]
+        return grd
