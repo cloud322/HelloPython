@@ -193,8 +193,50 @@ a,b,c,d,e = numbers     #튜플에 저장된 데이터를 언패킹(unpacking)
 print(c)
 
 numbers = 1,2,3,4,5     #패킹시 () 생략가능
-x,y,z = numbers         #unpacking 시 데이터수 = 변수수 일치해야함
+# x,y,z = numbers         #unpacking 시 데이터수 = 변수수 일치해야함
 x,y,*z = numbers         #unpacking 시 변수갯수 불일치시 처리방법
 print(z)
 
 a,b,c = 1,2,3 #변수 초기화 패킹 언패킹 사용
+
+
+#연습문제
+# x=[1,2,3,4,5,6,7,8,9]
+#
+# print(x)
+# x.append(10)
+# print(x)
+# x.extend([11,12])
+
+def myRange(start,end,hop=1):
+    retVal =start
+
+    while retVal <=end:
+        yield retVal
+        retVal += hop
+hap = 0
+for i in range(1,5,2):      #결과 : 9 #종료값이 포함된 range 함수작성
+    hap+=i                  #결국 리스트형태의 갑이 출력
+print(hap)
+
+
+def myRange2(start,end,hop=1):
+    retVal =start
+
+    while retVal <=end:
+        # yield retVal
+        # return retVal ??   #중간 계사결과를 출력 또는 처리
+        yield retVal        #실행중에 계산된 값은 generator 타입에 저장해둠
+        retVal += hop
+
+
+myRange2(1,5,2)
+a= myRange2(1,5,2)      #yield 로넘긴 데이터는 순환 형식의 generator 타입 생성
+print(a)
+
+print( next(a))             #generator 타입에 저장된 값은 literator 형식으로 다룰 수 있음
+print( next(a))             #literator 는 리스트에 저장된 객체를 하나씩 순환하며
+print( next(a))             #하나씩 꺼내 사용하는 자료구조
+
+for i in a:
+    print(i)
